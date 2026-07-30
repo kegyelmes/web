@@ -133,51 +133,90 @@
                 <td>Tier-A. Teljesen moduláris, Gold minősítés, ATX 3.0, van 12VHPWR csatlakozó. Rendszer fogyasztása csúcson ~350W → 750W = 53% terhelés, optimális hatásfok. Zero RPM mód alacsony terhelésnél.</td>
                 <td class="price pc-item">44 990</td>
             </tr>
-            <tr class="highlight-row">
+            <tr class="total">
+                <td colspan="4" style="text-align: right;" id="pc-total-row">
+                <!-- PC összeg -->
+                </td>
+            </tr>
+			<tr class="highlight-row">
                 <td><b>Monitor</b></td>
                 <td>Dell UltraSharp U3225QE</td>
                 <td>32", Dokkoló funkciókkal.</td>
-                <td class="price peri-item">322 065</td>
+                <td class="price peri-base-item">322 065</td>
             </tr>
-            <tr class="highlight-row">
+			<tr class="highlight-row">
                 <td><b>Billentyűzet</b></td>
                 <td>Keychron C2 Pro 8K</td>
                 <td>Testreszabható vezetékes billentyűzet</td>
-                <td class="price peri-item">26.990</td>
-            </tr class="highlight-row">
+                <td class="price peri-base-item">26 990</td>
+            </tr>
             <tr class="highlight-row">
                 <td><b>Egér</b></td>
                 <td>Logitech G502 X</td>
                 <td>Vezetékes. Kiváló szenzor (HERO 25K), nagyon precíz, rengeteg programozható gomb, DPI-váltó gomb, masszív felépítés. Windows/Linux kompatibilis.</td>
-                <td class="price peri-item">29 990</td>
-            </tr>
-            <tr class="highlight-row">
-                <td><b>Headset (fülhallgató + mikrofon)</b></td>
-                <td>HP HyperX Cloud III</td>
-                <td>Vezetékes. "bedugod és működik" - nincs szükség külön driverre; kiváló mikrofon; nagyon kényelmes; játékra és zenehallgatásra is jó. Windows/Linux kompatibilitás.</td>
-                <td class="price peri-item">24 989</td>
-            </tr>
-            <tr class="highlight-row">
-                <td><b>Mikrofon</b></td>
-                <td>RØDE PodMic USB</td>
-                <td></td>
-                <td class="price peri-item">68 900</td>
+                <td class="price peri-base-item">29 990</td>
             </tr>
             <tr class="highlight-row">
                 <td><b>Hangfal</b></td>
                 <td>Edifier MR4</td>
 				<td></td>
-                <td class="price peri-item">34 190</td>
+                <td class="price peri-base-item">34 190</td>
             </tr>			
-            <tr class="highlight-row">
+            <tr class="total">
+                <td colspan="4" style="text-align: right;" id="peri-base-total-row">
+                <!-- Alap periféria összeg -->
+                </td>
+            </tr>			
+			<tr>
+                <td><b>Headset (fülhallgató + mikrofon)</b></td>
+                <td>HP HyperX Cloud III</td>
+                <td>Vezetékes. "bedugod és működik" - nincs szükség külön driverre; kiváló mikrofon; nagyon kényelmes; játékra és zenehallgatásra is jó. Windows/Linux kompatibilitás.</td>
+                <td class="price peri-extra-item">24 989</td>
+            </tr>
+            <tr>
+                <td><b>Mikrofon</b></td>
+                <td>RØDE PodMic USB</td>
+                <td></td>
+                <td class="price peri-extra-item">68 900</td>
+            </tr>
+            <tr>
                 <td><b>Kamera</b></td>
                 <td>Logitech Brio 500</td>
 				<td>1080p/30 FPS, UVC szabvány → Windows és Linux alatt driver nélkül működik, jó mikrofonok, automatikus expozíció, USB-C Fizikai kameratakaró</td>
-                <td class="price peri-item">29 900</td>
+                <td class="price peri-extra-item">29 900</td>
+            </tr>
+            <tr>
+                <td><b>Nyomtató</b></td>
+                <td></td>
+				<td><i>Lásd multi</i></td>
+                <td class="price peri-extra-item">0</td>
+            </tr>
+            <tr>
+                <td><b>Scanner</b></td>
+                <td></td>
+				<td><i>Lásd multi</i></td>
+                <td class="price peri-extra-item">0</td>
+            </tr>
+            <tr>
+                <td><b>Multi (nyomtató + scanner)</b></td>
+                <td>Brother DCP-J1200W</td>
+				<td>nyomtató + scanner, Wi-Fi, AirPrint, Windows/Linux</td>
+                <td class="price peri-extra-item">66 890Ft-tól</td>
+            </tr>
+            <tr>
+                <td><b>3D nyomtató</b></td>
+                <td>Bambu LabX2D Combo </td>
+				<td></td>
+                <td class="price peri-extra-item">351 900</td>
             </tr>
             <tr class="total">
+                <td colspan="4" style="text-align: right;" id="peri-extra-total-row">
+                <!-- Extra periféria összeg -->
+                </td>
+            </tr>			
+            <tr class="total">
                 <td colspan="4" style="text-align: right;" id="total-price">
-                    <!-- A JavaScript ide fogja beírni a formázott szöveget -->
+                    <!-- A JavaScript ide fogja beírni a formázott mindösszesen szöveget -->
                 </td>
             </tr>
         </tbody>
@@ -195,34 +234,39 @@
 
     <!-- Automatikus összegző script -->
     <script>
+        function calculateCategoryTotal(className) {
+            let cells = document.querySelectorAll('.' + className);
+            let total = 0;
+            cells.forEach(cell => {
+                let num = parseInt(cell.textContent.replace(/\D/g, ''), 10);
+                if (!isNaN(num)) total += num;
+            });
+            return total;
+        }
+
         function calculateTotalFromText() {
-            // PC alkatrészek összeadása
-            let pcCells = document.querySelectorAll('.pc-item');
-            let pcTotal = 0;
-            pcCells.forEach(cell => {
-                let num = parseInt(cell.textContent.replace(/\D/g, ''), 10);
-                if (!isNaN(num)) pcTotal += num;
-            });
+            // Összegek kiszámítása kategóriánként
+            let pcTotal = calculateCategoryTotal('pc-item');
+            let periBaseTotal = calculateCategoryTotal('peri-base-item');
+            let periExtraTotal = calculateCategoryTotal('peri-extra-item');
 
-            // Perifériák összeadása
-            let periCells = document.querySelectorAll('.peri-item');
-            let periTotal = 0;
-            periCells.forEach(cell => {
-                let num = parseInt(cell.textContent.replace(/\D/g, ''), 10);
-                if (!isNaN(num)) periTotal += num;
-            });
+            // Mindösszesen
+            let grandTotal = pcTotal + periBaseTotal + periExtraTotal;
 
-            // Összesen érték
-            let grandTotal = pcTotal + periTotal;
-
-            // Formázott megjelenítés összeállítása
+            // Formázott értékek
             let formattedPc = pcTotal.toLocaleString('hu-HU') + ' Ft';
-            let formattedPeri = periTotal.toLocaleString('hu-HU') + ' Ft';
+            let formattedPeriBase = periBaseTotal.toLocaleString('hu-HU') + ' Ft';
+            let formattedPeriExtra = periExtraTotal.toLocaleString('hu-HU') + ' Ft';
             let formattedGrand = grandTotal.toLocaleString('hu-HU') + ' Ft';
 
-            // HTML frissítése
+            // Kategória összegző sorok frissítése
+            document.getElementById('pc-total-row').innerHTML = 'PC ÖSSZESEN: ' + formattedPc;
+            document.getElementById('peri-base-total-row').innerHTML = 'Alap perifériák ÖSSZESEN: ' + formattedPeriBase;
+            document.getElementById('peri-extra-total-row').innerHTML = 'Extra perifériák ÖSSZESEN: ' + formattedPeriExtra;
+
+            // Mindösszesen sor frissítése
             document.getElementById('total-price').innerHTML = 
-                '<b>PC: ' + formattedPc + ' + Perifériák: ' + formattedPeri + ' | ÖSSZESEN: ' + formattedGrand + '</b>';
+                '<b>PC: ' + formattedPc + ' + Alap periféria: ' + formattedPeriBase + ' + Extra periféria: ' + formattedPeriExtra + ' | MINDÖSSZESEN: ' + formattedGrand + '</b>';
         }
 
         window.onload = calculateTotalFromText;
