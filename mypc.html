@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Számítógép Konfiguráció Összegzés</title>
+    <style>
+        body {
+            background-color: #c0c0c0;
+            font-family: "Times New Roman", Times, serif;
+            color: #000000;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-family: "Courier New", Courier, monospace;
+            text-decoration: underline;
+        }
+        table {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: #000080;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 6px;
+            border: 1px solid #000000;
+            text-align: left;
+        }
+        td {
+            padding: 6px;
+            border: 1px solid #000000;
+            vertical-align: top;
+        }
+        tr.total {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+        hr {
+            border: 1px inset #ffffff;
+            width: 90%;
+        }
+        .price {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Számítógép Konfiguráció</h1>
+    <hr>
+    <br>
+
+    <table border="1" cellpadding="4" cellspacing="0" id="pc-table">
+        <thead>
+            <tr>
+                <th>Megnevezés</th>
+                <th>Típus</th>
+                <th>Indoklás</th>
+                <th>Becsült ár (Ft)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Processzor (CPU)</b></td>
+                <td>AMD Ryzen 7 9700X (AM5, Zen 5, 65W TDP)</td>
+                <td>8 mag, 16 szál, 5,5 GHz boost. Alacsony fogyasztás, csendes működés, kiváló Linux támogatás. Tökéletes ár/teljesítmény arány a kategóriában.</td>
+                <td class="price pc-item">104 000</td>
+            </tr>
+            <tr>
+                <td><b>Processzor hűtő</b></td>
+                <td>Thermalright Phantom Spirit 120 SE</td>
+                <td>Dupla tornyos kialakítású, hővezető csöves univerzális CPU hűtés 2 darab 120mm-es PWM sebesség szabályzású ventilátorral. Rézmagos hűtőborda.</td>
+                <td class="price pc-item">24 519</td>
+            </tr>
+            <tr>
+                <td><b>Alaplap</b></td>
+                <td>MSI MAG B650 Tomahawk WiFi (AM5, ATX)</td>
+                <td>Kiváló VRM (14+2 fázis), 3× M.2, 2.5G LAN, WiFi 6E, USB-C hátlapján. Tier-A alaplap B650 áron. A 9700X-hez bőven elegendő és stabil EXPO RAM támogatás.</td>
+                <td class="price pc-item">56 390</td>
+            </tr>
+            <tr>
+                <td><b>Memória (RAM)</b></td>
+                <td>G.Skill Flare X5 32GB DDR5-6000 CL30 (F5-6000J3038F16GX2-FX5)</td>
+                <td>32 GB dual-channel, 6000 MHz = AMD Zen 5 édes pontja. CL30 késleltetés, EXPO profil, RGB-mentes. Azonnal stabil az MSI B650-en.</td>
+                <td class="price pc-item">50 000</td>
+            </tr>
+            <tr>
+                <td><b>Videokártya (GPU)</b></td>
+                <td>AMD Radeon RX 7800 XT 16GB</td>
+                <td>RDNA3, nem RDNA4, PCIe 4.0 x16 Nincs zárt driver, 2×8 tűs tápcsatlakozó (a legtöbb modellen). Linux kompatibilis.</td>
+                <td class="price pc-item">220 000</td>
+            </tr>
+            <tr>
+                <td><b>Háttértár (SSD)</b></td>
+                <td>Samsung 990 Pro 1TB NVMe PCIe 4.0 M.2</td>
+                <td>
+					450/6900 MB/s, megbízható, Linux-kompatibilis. 1TB = rendszer + programok bőven. Hűtőbordás verzió ajánlott (az MSI M.2 Shield Frozr mellett is).
+					<br /><i>Indoklás: 500 GB SSD szerintem bőven elég a rendszernek és a programoknak. Nem azért veszünk drága gépet, hogy egy digitális padlás legyen belőle tele fotókkal, ISO fájlokkal és soha többé elő nem vett dolgokkal. Arra ott a NAS vagy egy külső meghajtó.</i>
+                </td>
+                <td class="price pc-item">82 990</td>
+            </tr>
+            <tr>
+                <td><b>Ház</b></td>
+                <td>Fractal Design Pop Air Black TG (FD-C-POR1A-02)</td>
+                <td>Mesh előlap, 3×120mm előre telepített ventilátor, GPU max. 405mm, CPU hűtő max. 170mm. Nincs RGB kötelező, egyszerű kábelmenedzsment, kiváló légáramlás.</td>
+                <td class="price pc-item">30 665</td>
+            </tr>
+            <tr>
+                <td><b>Tápegység (PSU)</b></td>
+                <td>Corsair RM750e 750W 80 PLUS Gold (ATX 3.0, 12VHPWR)</td>
+                <td>Tier-A. Teljesen moduláris, Gold minősítés, ATX 3.0, van 12VHPWR csatlakozó. Rendszer fogyasztása csúcson ~350W → 750W = 53% terhelés, optimális hatásfok. Zero RPM mód alacsony terhelésnél.</td>
+                <td class="price pc-item">44 990</td>
+            </tr>
+            <tr>
+                <td><b>Monitor</b></td>
+                <td>Dell UltraSharp U3225QE</td>
+                <td>32", Dokkoló funkciókkal.</td>
+                <td class="price peri-item">322 065</td>
+            </tr>
+            <tr>
+                <td><b>Billentyűzet</b></td>
+                <td>Keychron C2 Pro 8K</td>
+                <td>Testreszabható vezetékes billentyűzet</td>
+                <td class="price peri-item">26.990</td>
+            </tr>
+            <tr>
+                <td><b>Egér</b></td>
+                <td>Logitech G502 X</td>
+                <td>Vezetékes. Kiváló szenzor (HERO 25K), nagyon precíz, rengeteg programozható gomb, DPI-váltó gomb, masszív felépítés. Windows/Linux kompatibilis.</td>
+                <td class="price peri-item">29 990</td>
+            </tr>
+            <tr>
+                <td><b>Headset (fülhallgató + mikrofon)</b></td>
+                <td>HP HyperX Cloud III</td>
+                <td>Vezetékes. "bedugod és működik" - nincs szükség külön driverre; kiváló mikrofon; nagyon kényelmes; játékra és zenehallgatásra is jó. Windows/Linux kompatibilitás.</td>
+                <td class="price peri-item">24 989</td>
+            </tr>
+
+            <tr class="total">
+                <td colspan="4" style="text-align: right;" id="total-price">
+                    <!-- A JavaScript ide fogja beírni a formázott szöveget -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <i>
+        <p>A válogatásnál az ár természetesen nem volt szempont – mert miért is számolgatnánk apróságokkal, amikor lehet jó eszközt választani? Az ársávot Kb 6-800 000 közé lőttem be. A cél nem a villogó gamer csoda megvásárlása, hanem egy olyan gép összeállítása, ami évek múlva is teszi a dolgát, nem pedig magyarázkodik, hogy miért nem.</p>
+        <p>A minőség, a megbízhatóság és a hosszú távú használhatóság számít. Előnyben vannak azok az eszközök, amelyek Windows, Linux és macOS alatt is hajlandók együttműködni, külön varázslás, gyártói csodaprogram vagy heti firmware-rituálé nélkül.</p>
+    </i>
+    <br/>
+    <hr/>
+    <div class="footer">
+        <p>Utolsó frissítés: 2026.07.29.</p>
+    </div>
+
+    <!-- Automatikus összegző script -->
+    <script>
+        function calculateTotalFromText() {
+            // PC alkatrészek összeadása
+            let pcCells = document.querySelectorAll('.pc-item');
+            let pcTotal = 0;
+            pcCells.forEach(cell => {
+                let num = parseInt(cell.textContent.replace(/\D/g, ''), 10);
+                if (!isNaN(num)) pcTotal += num;
+            });
+
+            // Perifériák összeadása
+            let periCells = document.querySelectorAll('.peri-item');
+            let periTotal = 0;
+            periCells.forEach(cell => {
+                let num = parseInt(cell.textContent.replace(/\D/g, ''), 10);
+                if (!isNaN(num)) periTotal += num;
+            });
+
+            // Összesen érték
+            let grandTotal = pcTotal + periTotal;
+
+            // Formázott megjelenítés összeállítása
+            let formattedPc = pcTotal.toLocaleString('hu-HU') + ' Ft';
+            let formattedPeri = periTotal.toLocaleString('hu-HU') + ' Ft';
+            let formattedGrand = grandTotal.toLocaleString('hu-HU') + ' Ft';
+
+            // HTML frissítése
+            document.getElementById('total-price').innerHTML = 
+                '<b>PC: ' + formattedPc + ' + Perifériák: ' + formattedPeri + ' | ÖSSZESEN: ' + formattedGrand + '</b>';
+        }
+
+        window.onload = calculateTotalFromText;
+    </script>
+
+</body>
+</html>
